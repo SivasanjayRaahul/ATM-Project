@@ -5,6 +5,8 @@ import atm.database.Database;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,7 +14,7 @@ public class BankRepoImpl implements BankRepo {
     Logger logger = Logger.getLogger("BankRepoImpl");
 
     @Override
-    public boolean isValidAccount(String accountNumber) {
+    public boolean isValidAccountNumber(String accountNumber) {
 
         ResultSet result;
         boolean isValidAccount = false;
@@ -60,6 +62,18 @@ public class BankRepoImpl implements BankRepo {
         return isPinValidate;
     }
 
-    //TODO balance
-
+    @Override
+    public int balance(String accountNumber) {
+        ResultSet result;
+        int balance = 0;
+        try {
+            PreparedStatement checkBalance = Database.getConnection().prepareStatement("select * from user where Account_No=?");
+            checkBalance.setString(1, accountNumber);
+            result = checkBalance.executeQuery();
+            balance = result.getInt(7);
+        } catch (ClassNotFoundException | SQLException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
+        return balance;
+    }
 }
