@@ -1,5 +1,8 @@
 package atm.model.bank;
 
-public interface Bank {
-    public void transaction(int amount);
+public class Bank{
+
+    public String name;
+    public String IFSC;
+
 }
