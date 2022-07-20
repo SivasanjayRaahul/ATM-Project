@@ -1,6 +1,14 @@
 package atm.model.bank;
 
-public class AxisBank extends Bank {
-    public String name = "AxisBank";
-    public String IFSC = "AXIS89078A";
+import atm.constant.Constants;
+
+public class AxisBank implements Bank {
+
+    public String getName() {
+        return Constants.AXIS_NAME;
+    }
+
+    public String getIFSC() {
+        return Constants.AXIS_IFSC;
+    }
 }

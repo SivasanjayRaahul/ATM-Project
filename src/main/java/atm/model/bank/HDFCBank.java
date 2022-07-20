@@ -1,6 +1,15 @@
 package atm.model.bank;
 
-public class HDFCBank extends Bank {
-    String name = "HDFCBank";
-    String IFSC = "HDFC2000N1";
+import atm.constant.Constants;
+
+public class HDFCBank implements Bank {
+    @Override
+    public String getName() {
+        return Constants.HDFC_Name;
+    }
+
+    @Override
+    public String getIFSC() {
+        return Constants.HDFC_IFSC;
+    }
 }
