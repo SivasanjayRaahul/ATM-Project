@@ -8,5 +8,5 @@ public class Constants {
     public static String AXIS_IFSC = "AXI90000N2";
     public static String HDFC_Name = "HDFCBANK";
     public static String HDFC_IFSC = "HDFC2000N1";
-    public static Scanner scanner = new Scanner(System.in);
+    public static Scanner SCANNER = new Scanner(System.in);
 }

@@ -7,7 +7,7 @@ public class Card {
     private final Account account;
 
 
-    public Card(String number, String holderName, Account account, int pin) {
+    public Card(String number, Account account, int pin) {
         this.number = number;
         this.account = account;
         this.pin = pin;
