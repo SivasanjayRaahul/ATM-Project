@@ -2,7 +2,7 @@ package atm.model.bank;
 
 
 public interface Bank {
-    public String getName();
+    String getName();
 
-    public String getIFSC();
+    String getIFSC();
 }

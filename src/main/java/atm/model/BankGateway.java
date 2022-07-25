@@ -1,17 +1,15 @@
 package atm.model;
 
-import atm.constant.Constants;
 import atm.model.bank.Bank;
 import atm.model.bank.HDFCBank;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static atm.constant.Constants.SCANNER;
 
 public class BankGateway {
-    private List<User> users = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
 
     public String createUser(String name, String emailId, int age) {
         User user = new User(name, emailId, age);

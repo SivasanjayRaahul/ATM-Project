@@ -4,7 +4,6 @@ import atm.model.bank.Bank;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class User {
     private final String customerId;
@@ -15,7 +14,7 @@ public class User {
 
 
     public User(String name, String emailId, int age) {
-        this.customerId = name.substring(4) + emailId.substring(4) + String.valueOf(age);
+        this.customerId = name.substring(4) + emailId.substring(4) + age;
         this.name = name;
         this.emailId = emailId;
         this.age = age;
