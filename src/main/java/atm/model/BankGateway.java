@@ -11,6 +11,8 @@ import static atm.constant.Constants.SCANNER;
 
 public class BankGateway {
     private final List<User> users = new ArrayList<>();
+    private final static BankGateway bankGateway = new BankGateway();
+
 
     public String createUser(String name, String emailId, int age) {
         User user = new User(name, emailId, age);
@@ -32,7 +34,6 @@ public class BankGateway {
     }
 
     public static void main(String[] args) {
-        BankGateway bankGateway = new BankGateway();
 
         System.out.println("1)Create an account");
         System.out.println("2)Create a bank account");
@@ -48,7 +49,9 @@ public class BankGateway {
 
             System.out.println("Enter the age");
             int age = SCANNER.nextInt();
-            System.out.println("Your Customer Id is" + bankGateway.createUser(name, mail, age));
+
+            System.out.println("Your Customer Id is: " + bankGateway.createUser(name, mail, age));
+            main(null);
         } else if (choice == 2) {
             System.out.println("Enter the customerId");
             String customerId = SCANNER.next();
@@ -72,6 +75,31 @@ public class BankGateway {
                 accountType = "Current";
 
             bankGateway.createBankAccount(user, bank, accountType);
+            main(null);
+        } else {
+            System.out.println("Enter the customerId");
+            String customerId = SCANNER.next();
+
+            User user = bankGateway.getUser(customerId);
+            List<Account> bankAccounts = user.getBankAccounts(user.getCustomerId());
+            if (bankAccounts.size() != 0) {
+                System.out.println("Your Bank Accounts are:\n");
+                for (Account bankAccount : bankAccounts) {
+                    System.out.println(bankAccount.getNumber(user.getCustomerId()));
+                }
+            } else
+                System.out.println("No Bank Accounts Found");
+
+            System.out.println("Select account number to generate ATM card");
+            int cardChoice = SCANNER.nextInt();
+            if (cardChoice > 0 && cardChoice <= bankAccounts.size()) {
+                Account account = bankAccounts.get(cardChoice - 1);
+                System.out.println("Enter the Pin");
+                int pin = SCANNER.nextInt();
+                account.createCard(pin);
+            } else
+                System.out.println("Enter proper Account number ordered");
+            main(null);
         }
 
     }

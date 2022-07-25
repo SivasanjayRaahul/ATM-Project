@@ -21,7 +21,7 @@ public class Account implements Transaction {
     }
 
     public void createCard(int pin) {
-       this.card = new Card(String.valueOf(Math.random() * 100000000000000L),this,pin);
+        this.card = new Card(String.valueOf(Math.random() * 100000000000000L), this, pin);
     }
 
     public float checkBalance() {
@@ -41,4 +41,9 @@ public class Account implements Transaction {
     }
 
 
+    public String getNumber(String customerId) {
+        if (customerId.equals(this.customerId))
+            return number;
+        return null;
+    }
 }

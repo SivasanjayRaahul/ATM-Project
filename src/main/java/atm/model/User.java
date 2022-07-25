@@ -14,7 +14,7 @@ public class User {
 
 
     public User(String name, String emailId, int age) {
-        this.customerId = name.substring(4) + emailId.substring(4) + age;
+        this.customerId = name.substring(2) + emailId.substring(0,3) + age;
         this.name = name;
         this.emailId = emailId;
         this.age = age;
@@ -28,7 +28,7 @@ public class User {
     public List<Account> getBankAccounts(String customerId) {
         if (customerId.equals(this.customerId))
             return bankAccounts;
-        return null;
+        return new ArrayList<>();
     }
 
     public String getCustomerId() {
