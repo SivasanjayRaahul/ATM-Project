@@ -35,7 +35,7 @@ public class BankGateway {
 
     public static void main(String[] args) {
 
-        System.out.println("1)Create an account");
+        System.out.println("1)Create an User account");
         System.out.println("2)Create a bank account");
         System.out.println("3)Create ATM card");
 
@@ -99,7 +99,7 @@ public class BankGateway {
                 int pin = SCANNER.nextInt();
                 account.createCard(pin);
             } else
-                System.out.println("Enter proper Account number ordered");
+                System.out.println("Select proper Bank Name ordered");
             main(null);
         }
 
