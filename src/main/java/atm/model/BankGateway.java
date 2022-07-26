@@ -38,6 +38,7 @@ public class BankGateway {
         System.out.println("1)Create an account");
         System.out.println("2)Create a bank account");
         System.out.println("3)Create ATM card");
+
         int choice = SCANNER.nextInt();
         if (choice == 1) {
 
@@ -84,13 +85,13 @@ public class BankGateway {
             List<Account> bankAccounts = user.getBankAccounts(user.getCustomerId());
             if (bankAccounts.size() != 0) {
                 System.out.println("Your Bank Accounts are:\n");
-                for (Account bankAccount : bankAccounts) {
-                    System.out.println(bankAccount.getNumber(user.getCustomerId()));
+                for (int account = 0; account < bankAccounts.size(); account++) {
+                    System.out.println(account + 1 + ") " + bankAccounts.get(account).getBank().getName());
                 }
             } else
                 System.out.println("No Bank Accounts Found");
 
-            System.out.println("Select account number to generate ATM card");
+            System.out.println("Select Bank name to generate ATM card");
             int cardChoice = SCANNER.nextInt();
             if (cardChoice > 0 && cardChoice <= bankAccounts.size()) {
                 Account account = bankAccounts.get(cardChoice - 1);

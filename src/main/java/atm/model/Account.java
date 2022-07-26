@@ -28,6 +28,11 @@ public class Account implements Transaction {
         return balance;
     }
 
+
+    public Bank getBank() {
+        return bank;
+    }
+
     @Override
     public void withdraw(int amount) {
         if (amount < balance) {
@@ -40,10 +45,4 @@ public class Account implements Transaction {
         balance += amount;
     }
 
-
-    public String getNumber(String customerId) {
-        if (customerId.equals(this.customerId))
-            return number;
-        return null;
-    }
 }
