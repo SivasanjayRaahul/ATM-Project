@@ -9,7 +9,7 @@ public class Account implements Transaction {
     private final String holderName;
     private final Bank bank;
     private final String customerId;
-    private Card card;
+    private Card card = null;
 
     public Account(String number, String accountType, int balance, String holderName, Bank bank, String customerId) {
         this.number = number;
@@ -28,9 +28,12 @@ public class Account implements Transaction {
         return balance;
     }
 
-
     public Bank getBank() {
         return bank;
+    }
+
+    public Card getCard() {
+        return card;
     }
 
     @Override
@@ -44,5 +47,4 @@ public class Account implements Transaction {
     public void deposit(int amount) {
         balance += amount;
     }
-
 }
