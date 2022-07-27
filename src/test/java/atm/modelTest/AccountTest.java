@@ -42,6 +42,16 @@ class AccountTest {
     }
 
     @Test
+    void shouldReturnSameBalanceWhenWithdrawalAmountIsGreaterThanBalance() {
+
+        account.deposit(10);
+
+        account.withdraw(50);
+
+        assertEquals(10.0, account.checkBalance());
+    }
+
+    @Test
     void shouldReturnHDFCAsBankForTheAccount() {
         assertEquals(account.getBank().getName(), "HDFCBANK");
     }

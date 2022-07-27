@@ -44,4 +44,13 @@ public class CardTest {
         assertFalse(card.isStatus());
     }
 
+    @Test
+    void shouldReturnTrueWhenPinIsEnteredCorrectly() {
+        assertTrue(card.validatePin(1234));
+    }
+
+    @Test
+    void shouldReturnFalseWhenPinIsNotEnteredCorrectly() {
+        assertFalse(card.validatePin(1111));
+    }
 }
