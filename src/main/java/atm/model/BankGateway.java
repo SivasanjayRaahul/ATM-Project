@@ -4,6 +4,7 @@ import atm.model.bank.AxisBank;
 import atm.model.bank.Bank;
 import atm.model.bank.HDFCBank;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,6 @@ import static atm.constant.Constants.SCANNER;
 public class BankGateway {
     private final List<User> users = new ArrayList<>();
     private final static BankGateway bankGateway = new BankGateway();
-
 
     private String createUser(String name, String emailId, int age) {
         User user = new User(name, emailId, age);
@@ -41,8 +41,7 @@ public class BankGateway {
         System.out.println("Enter Pin:");
         int pin = SCANNER.nextInt();
         if (isPinValidate(card, pin)) {
-
-            System.out.println("Select an option:\n1) Cash withdrawal \n2) Balance Enquiry\n3) Deposit\n 4)Exit");
+            System.out.println("Select an option:\n1) Cash withdrawal \n2) Balance Enquiry\n3) Deposit\n4) Exit");
             int option = SCANNER.nextInt();
             if (option == 1) {
                 System.out.println("Enter the withdrawal amount:");
@@ -50,12 +49,14 @@ public class BankGateway {
                 if (amount <= card.checkBalance()) {
                     card.getAccount().withdraw(amount);
                     System.out.println("Amount withdrawal successful");
-                } else
+                    atmActivities(card);
+                } else {
                     System.out.println("Balance not sufficient");
-                main(null);
+                    main(null);
+                }
             } else if (option == 2) {
                 System.out.println("Balance Amount: " + card.checkBalance());
-                atmActivities(card);
+                main(null);
             } else if (option == 3) {
                 System.out.println("Enter the amount to be deposited:");
                 int amount = SCANNER.nextInt();
@@ -65,9 +66,14 @@ public class BankGateway {
 
             } else
                 main(null);
-
         } else {
-            System.out.println("Incorrect Pin");
+            if (card.getPinAttempt() <= 1) {
+                card.pinAttempt();
+                System.out.println("Incorrect Pin");
+                atmActivities(card);
+            }
+            card.block();
+            System.out.println("Sorry your card is blocked :( ");
             main(null);
         }
     }
@@ -191,7 +197,12 @@ public class BankGateway {
                     Account account = bankAccounts.get(cardChoice - 1);
                     if (account.getCard() != null) {
                         Card card = account.getCard();
-                        bankGateway.atmActivities(card);
+                        if (card.isStatus())
+                            bankGateway.atmActivities(card);
+                        else {
+                            System.out.println("Sorry your card is Blocked");
+                            main(null);
+                        }
                     } else {
                         System.out.println("No cards exist for this account");
                         main(null);
