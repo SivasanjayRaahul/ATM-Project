@@ -48,8 +48,8 @@ public class BankGateway {
                 int amount = SCANNER.nextInt();
                 if (amount <= card.checkBalance()) {
                     card.getAccount().withdraw(amount);
-                    System.out.println("Amount withdrawal successful");
-                    atmActivities(card);
+                    System.out.println("Amount withdrawal successful. Remaining Balance: " + card.checkBalance());
+                    main(null);
                 } else {
                     System.out.println("Balance not sufficient");
                     main(null);
