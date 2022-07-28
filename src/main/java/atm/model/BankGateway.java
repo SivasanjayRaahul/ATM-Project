@@ -4,7 +4,6 @@ import atm.model.bank.AxisBank;
 import atm.model.bank.Bank;
 import atm.model.bank.HDFCBank;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 import java.util.List;
 

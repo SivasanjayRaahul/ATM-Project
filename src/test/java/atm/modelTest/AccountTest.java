@@ -32,7 +32,7 @@ class AccountTest {
 
 
     @Test
-    void shouldReturnFiftyRupeesWhenFiftyRupeesIsWithdrawn() {
+    void shouldReturnFiftyRupeesAsBalanceWhenFiftyRupeesIsWithdrawnWithAccountHavingHundredInIt() {
 
         account.deposit(100);
 
