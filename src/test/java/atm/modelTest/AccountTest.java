@@ -3,7 +3,7 @@ package atm.modelTest;
 import atm.model.Account;
 import atm.model.User;
 import atm.model.bank.HDFCBank;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class AccountTest {
     static Account account;
 
-    @BeforeAll
-    static void beforeAll() {
+    @BeforeEach
+    public void beforeEach() {
         User user = new User("Siva", "ssr@gmail.com", 21);
         String customerId = user.getCustomerId();
         user.createAccount(new HDFCBank(), "SAVINGS");
