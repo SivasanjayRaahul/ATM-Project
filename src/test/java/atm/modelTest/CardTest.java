@@ -41,6 +41,7 @@ public class CardTest {
     @Test
     void shouldReturnFalseAsCardStatusWhenCardIsBlock() {
         card.block();
+
         assertFalse(card.isStatus());
     }
 
